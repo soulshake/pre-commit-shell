@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "begin shellcheck" 
 
@@ -8,6 +9,7 @@ if [[ $? != 0 ]]; then
     exit 1
 fi
 
-shellcheck $@
+for f in $(git diff --cached --name-only | grep .sh$); do
+    shellcheck "$(git rev-parse --show-toplevel)/$f"
+done
 exit $?
-
