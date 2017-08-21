@@ -1,7 +1,6 @@
 #!/bin/bash
-set -e
 
-echo "begin shellcheck" 
+echo "begin shellcheck/lint" 
 
 which shellcheck &> /dev/null
 if [[ $? != 0 ]]; then
