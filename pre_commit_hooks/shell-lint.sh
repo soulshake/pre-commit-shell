@@ -8,7 +8,7 @@ if [[ $? != 0 ]]; then
     exit 1
 fi
 
-for f in $(git diff --cached --diff-filter=AM name-only | grep .sh$); do
+for f in $(git diff --cached --diff-filter=AM --name-only | grep .sh$); do
     shellcheck "$(git rev-parse --show-toplevel)/$f"
 done
 exit $?
